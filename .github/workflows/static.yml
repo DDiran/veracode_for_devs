@@ -34,7 +34,7 @@ jobs:
         uses: actions/upload-artifact@v3
         with:
           name: community-feed
-          path: community-feed
+          path: ./
   # Single deploy job since we're just deploying
   deploy:
     needs: build
@@ -45,6 +45,11 @@ jobs:
     steps:
       - name: Setup Pages
         uses: actions/configure-pages@v3
+      - name: Download JSON Artifact
+        uses: actions/download-artifact@v3
+        with:
+          - name: community-feed
+          - path: community-feed
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v1
         with:
