@@ -7,7 +7,6 @@ def extract_data(file):
     data = []
 
     # Regular expression to match a package line
-    # package_regex = re.compile(r'\[(.*?)\]\((.*?)\)\s\((.*?)\)\s-\s(.*?)\.')
     package_regex = re.compile(r"- \[(.*)\]\((.*)\) \((\[.*\]\(.*\))\) - (.*)")
 
     # Regular expression to match a heading line
@@ -59,9 +58,67 @@ def extract_data(file):
                 })
     return data
 
+def save_to_json(data):
+    # Community-feed path
+    json_path = path.join(path.dirname(path.realpath(__file__)), 'community-feed')
+
+    # Create a dictionary to store the category files
+    category_files = {}
+
+    # Save the entire dataset to a JSON file
+    with open(path.join(json_path, 'community_integrations.json'), 'w') as f:
+        f.write(json.dumps(data))
+
+# Loop through the JSON entries and group them by category
+    for entry in data['community_integrations']:
+        category = entry['categories']['category']
+
+        # Create a new file for the category if it doesn't exist
+        if category not in category_files:
+            category_file_path = path.join(json_path, f"{category}.json")
+            category_files[category] = open(category_file_path, "w")
+        
+        # Write the entry to the corresponding category file
+        json.dump(entry, category_files[category])
+        category_files[category].write("\n")
+
+    # Close all the category files
+    for f in category_files.values():
+        f.close()
+
+# def publish_to_remote_repo(category_files):
+#     # Push the category files to the remote repository
+#     repo_owner = "your-username"
+#     repo_name = "your-repo"
+#     branch_name = "main"
+#     commit_message = "Add category files"
+
+#     base_url = "https://api.github.com"
+#     headers = {
+#         "Authorization": f"token {access_token}",
+#         "Accept": "application/vnd.github.v3+json"
+#     }
+
+#     for category, f in category_files.items():
+#         # Read the category file data
+#         f.seek(0)
+#         file_data = f.read()
+
+#         # Create the file on the remote repository
+#         url = f"{base_url}/repos/{repo_owner}/{repo_name}/contents/{category}.json"
+#         data = {
+#             "message": commit_message,
+#             "content": file_data,
+#             "branch": branch_name
+#         }
+#         response = requests.put(url, headers=headers, json=data)
+
+#         # Check if the request was successful
+#         if response.status_code != 201:
+#             print(f"Failed to create file for category {category}: {response.json()['message']}")    
+
 def main():
-    cur_dir = path.dirname(path.realpath(__file__))
-    readme_path = path.join(cur_dir, 'README.md')
+    readme_path = path.join(path.dirname(path.realpath(__file__)), 'README.md')
 
     # Call the extract_data function to get the data from the file
     data = extract_data(readme_path)
@@ -69,9 +126,8 @@ def main():
     # Add a parent key to the data called 'community_integrations'
     data = {'community_integrations': data}
 
-    # Save the data to a JSON file
-    with open('community_integrations.json', 'w') as f:
-        f.write(json.dumps(data))
+    # Save the entire dataset to a JSON file
+    save_to_json(data)
 
 if __name__ == "__main__":
     main()
