@@ -1,0 +1,2 @@
+{"name": "Veracode Delete Sandboxes via Threshold", "link": "https://github.com/julz0815/VeracodeDeleteSandboxes", "author": {"name": "Julz0815", "profile_link": "https://github.com/julz0815/"}, "description": "Java Script that will automatically delete Sandboxes from a profile via a configured threshold and the number of Sandboxes to be deleted.", "categories": {"category": "Automating common Veracode Platform tasks", "subcategory": null}}
+e Platform tasks", "subcategory": null}}

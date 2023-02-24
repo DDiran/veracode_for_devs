@@ -1,6 +1,9 @@
 import json
 import re
+import glob
+
 from os import path
+from os import remove as rmv
 
 def extract_data(file):
     # Initialize a dictionary to store the data
@@ -62,6 +65,10 @@ def save_to_json(data):
     # Community-feed path
     json_path = path.join(path.dirname(path.realpath(__file__)), 'community-feed')
 
+    # Purge all existing files from the community-feed directory
+    for f in glob.glob(path.join(json_path, "*.json")):
+        rmv(f)
+
     # Create a dictionary to store the category files
     category_files = {}
 
@@ -75,12 +82,14 @@ def save_to_json(data):
 
         # Create a new file for the category if it doesn't exist
         if category not in category_files:
-            category_file_path = path.join(json_path, f"{category}.json")
-            category_files[category] = open(category_file_path, "w")
+            # Slugify the category name (replace spaces with dashes and lowercase the string)
+            category_slug = category.lower().replace(" ", "-")
+            category_file_path = path.join(json_path, f"{category_slug}.json")
+            category_files[category_slug] = open(category_file_path, "w")
         
         # Write the entry to the corresponding category file
-        json.dump(entry, category_files[category])
-        category_files[category].write("\n")
+        json.dump(entry, category_files[category_slug])
+        category_files[category_slug].write("\n")
 
     # Close all the category files
     for f in category_files.values():

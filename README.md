@@ -6,29 +6,31 @@ These projects are community contributed and not supported by Veracode. For a li
 
 <!-- START doctoc generated TOC please keep comment here to allow auto update -->
 <!-- DON'T EDIT THIS SECTION, INSTEAD RE-RUN doctoc TO UPDATE -->
+
 **Contents**
 
-- [Automating common Veracode Platform tasks](#automating-common-veracode-platform-tasks)
-- [Developer tools](#developer-tools)
-  - [Auto Packagers (for SAST)](#auto-packagers-for-sast)
-  - [CI/CD](#cicd)
-    - [Azure DevOps](#azure-devops)
-    - [GitHub](#github)
-  - [Build tools](#build-tools)
-  - [IDEs](#ides)
-  - [API testing tools](#api-testing-tools)
-  - [Other](#other)
-- [Pipeline Scan projects](#pipeline-scan-projects)
-- [Dynamic Analysis projects](#dynamic-analysis-projects)
-- [Results collection and display](#results-collection-and-display)
-- [User provisioning, management and deprovisioning](#user-provisioning-management-and-deprovisioning)
-- [Application vulnerability correlation](#application-vulnerability-correlation)
-- [HMAC Signing libraries](#hmac-signing-libraries)
-- [API wrappers](#api-wrappers)
-- [Other integrations](#other-integrations)
-- [Secure coding examples](#secure-coding-examples)
-- [Insecure applications](#insecure-applications)
-- [Automating Security Labs tasks](#automating-security-labs-tasks)
+- [Veracode Community Open Source Projects](#veracode-community-open-source-projects)
+  - [Automating common Veracode Platform tasks](#automating-common-veracode-platform-tasks)
+  - [Developer tools](#developer-tools)
+    - [Auto Packagers (for SAST)](#auto-packagers-for-sast)
+    - [CI/CD](#cicd)
+      - [Azure DevOps](#azure-devops)
+      - [GitHub](#github)
+    - [Build tools](#build-tools)
+    - [IDEs](#ides)
+    - [API testing tools](#api-testing-tools)
+    - [Other](#other)
+  - [Pipeline Scan projects](#pipeline-scan-projects)
+  - [Dynamic Analysis projects](#dynamic-analysis-projects)
+  - [Results collection and display](#results-collection-and-display)
+  - [User provisioning, management and deprovisioning](#user-provisioning-management-and-deprovisioning)
+  - [Application vulnerability correlation](#application-vulnerability-correlation)
+  - [HMAC Signing libraries](#hmac-signing-libraries)
+  - [API wrappers](#api-wrappers)
+  - [Other integrations](#other-integrations)
+  - [Secure coding examples](#secure-coding-examples)
+  - [Insecure applications](#insecure-applications)
+  - [Automating Security Labs tasks](#automating-security-labs-tasks)
 
 <!-- END doctoc generated TOC please keep comment here to allow auto update -->
 
@@ -36,7 +38,7 @@ These projects are community contributed and not supported by Veracode. For a li
 
 - [Veracode_Delete_Sandbox](https://github.com/christyson/veracode_delete_sandbox) ([Christyson](https://github.com/christyson/)) - A simple example script to delete a Sandbox if it exists in a Veracode application profile and you have the appropriate permissions.
 
-- [Check Build Status](https://github.com/christyson/check_build_status) ([Christyson](https://github.com/christyson/)) - Script to check if an application profile in Veracode has a build running currently.  It also provides an option to delete the build if there is one running.
+- [Check Build Status](https://github.com/christyson/check_build_status) ([Christyson](https://github.com/christyson/)) - Script to check if an application profile in Veracode has a build running currently. It also provides an option to delete the build if there is one running.
 
 - [Check Pass Fail](https://github.com/christyson/check_pass_fail) ([Christyson](https://github.com/christyson)) - A simple example script to check pass/fail status of a Veracode app profile (or sandbox) or for a list of app profiles with out sandboxes.
 
@@ -66,7 +68,11 @@ These projects are community contributed and not supported by Veracode. For a li
 
 ### Auto Packagers (for SAST)
 
-- [Node.js Auto Packager](https://github.com/fw10/veracode-node-packager) ([fw10](https://github.com/fw10/)) - CLI tool to automatically package a `Node.js` application for Veracode Static Analysis
+- [JavaScript Auto Packager](https://github.com/fw10/veracode-javascript-packager) ([fw10](https://github.com/fw10/)) - CLI tool to automatically package a `JavaScript` application for Veracode Static Analysis
+
+- [Go Auto Packager](https://github.com/relaxnow/vcgopkg) ([relaxnow](https://github.com/relaxnow)) - CLI tool to automatically package a `Golang` application for Veracode Static Analysis
+
+- [.NET Auto Packager](https://github.com/nhinv11/veracode-dotnet-packager) ([nhinv11](https://github.com/nhinv11)) - CLI tool to automatically package a `.NET` application for Veracode Static Analysis
 
 ### CI/CD
 
@@ -100,7 +106,7 @@ These projects are community contributed and not supported by Veracode. For a li
 
 - [Verademo](https://github.com/christyson/verademo) ([christyson](https://github.com/christyson)) - custom fork of Verademo, featuring sample pipeline configurations for Bitbucket, Jenkins and Azure Pipelines.
 
-- [XebiaLabs Release Veracode Plugin](https://github.com/xebialabs-community/xlr-veracode-plugin) ([XebiaLabs-Community](https://github.com/xebialabs-community)) - XL Release for Veracode test automation.  
+- [XebiaLabs Release Veracode Plugin](https://github.com/xebialabs-community/xlr-veracode-plugin) ([XebiaLabs-Community](https://github.com/xebialabs-community)) - XL Release for Veracode test automation.
 
 - [veracode-yml-sample-pipelines](https://github.com/victor-secops/Veracode-yml-sample-pipelines) ([Victor-secops](https://github.com/victor-secops/)) - example YML files for Azure DevOps, Jenkins, GitLab, CircleCI. Pipelines include Veracode SCA Agent scans, Veracode Static Analysis policy and pipeline scans.
 
@@ -114,7 +120,7 @@ These projects are community contributed and not supported by Veracode. For a li
 
 - [Veracode for Azure DevOps Pipelines](https://github.com/zoekdestep/veracode-ado-pipelines) ([zoekdestep](https://github.com/zoekdestep/)) - Yaml files to get started with Veracode on Azure DevOps. Accompanies this [blog post](https://community.veracode.com/s/blog/user-story-how-we-set-up-veracode-in-a-large-azure-project-MCT4HNONEE55CIFA6O3ULXNUW2BI).
 
-- [Azure DevOps Pipeline-Scan plugin](https://github.com/julz0815/ADO-Veracode-Pipeline-Scan-Plugin) ([Julz0815](https://github.com/julz0815/)) - This plugin should make it easier to run the Veracode pipeline scan on Azure DevOps pipelines. The full scan jar is included within the plugin and don't need to be downloaded each time when the pipeline runs. In addition it will populate an additional tab on your pipeline run to display results in a more convinient way. The plugin will automatically update itself every night if a new version of the piepline scan jar is published.  
+- [Azure DevOps Pipeline-Scan plugin](https://github.com/julz0815/ADO-Veracode-Pipeline-Scan-Plugin) ([Julz0815](https://github.com/julz0815/)) - This plugin should make it easier to run the Veracode pipeline scan on Azure DevOps pipelines. The full scan jar is included within the plugin and don't need to be downloaded each time when the pipeline runs. In addition it will populate an additional tab on your pipeline run to display results in a more convinient way. The plugin will automatically update itself every night if a new version of the piepline scan jar is published.
 
 - [SCA Findings to Work Items](https://github.com/cadonuno/SCAFindingsToWorkItems) ([Cadonuno](https://github.com/cadonuno/)) - Saves new Veracode SCA findings as Azure DevOps Work Items.
 
@@ -135,9 +141,11 @@ These projects are community contributed and not supported by Veracode. For a li
 - [vsccode-veracode-sca](https://github.com/Lerer/vscode-veracode-sca) ([Lerer](https://github.com/Lerer/)) - A very simple plugin for Veracode SCA to get agent-base SCA results into VSCode IDE.
 
 - [unofficial-vs-code-veracode-pipeline-scan](https://github.com/ctcampbell/unofficial-vs-code-veracode-pipeline-scan) ([Ctcampbell](https://github.com/ctcampbell/)) - Scan an app with Veracode Pipeline Scan, and load results from a Veracode Pipeline Scan.
-  - [Link to the plugin in VSCode marketplace](https://marketplace.visualstudio.com/items?itemName=ctcampbell-com.unofficial-vs-code-veracode)  
+
+  - [Link to the plugin in VSCode marketplace](https://marketplace.visualstudio.com/items?itemName=ctcampbell-com.unofficial-vs-code-veracode)
 
 - [Veracode Unified Plugin - Unofficial Version](https://github.com/Lerer/VSCode-Veracode-Unified) ([Lerer](https://github.com/Lerer/)) - VSCode plugin which integrate with the Veracode platform and enables downloading of scan results (findings) for both Static and SCA (Upload-and-Scan), run pipeline scan, and submit mitigations
+
   - [Link to the plugin in VSCode marketplace](https://marketplace.visualstudio.com/items?itemName=YaakovLerer.veracode)
 
 - [Jetbrains family plugin](https://github.com/geraldtancl/veracode.plugin) ([GeraldTanCL](https://github.com/geraldtancl)) - Compliments Veracode's official IntelliJ IDE integration with support for other Jetbrains IDE products. It enables you to download the SAST result from Veracode Platform into your Jetbrains IDE.
@@ -180,7 +188,7 @@ These projects are community contributed and not supported by Veracode. For a li
 
 - [veracode-da-reset-scheduler](https://github.com/dennismedeiros/veracode-da-reset-recheduler) ([dennismedeiros](https://github.com/dennismedeiros)) - Resets all recurrent scheduled analysis jobs configured for one year that have expired.
 
-- [Veracode Dynamic Analysis Examples](https://github.com/anon-veracoder/veracode-dynamic-analysis-api-examples) ([anon-veracoder](https://github.com/anon-veracoder)) - Dynamic Analysis API Examples.  Currently includes example code for using the Scanner Variables feature, where credentials can be defined and updated at the account level, and referenced in Selenium login scripts.
+- [Veracode Dynamic Analysis Examples](https://github.com/anon-veracoder/veracode-dynamic-analysis-api-examples) ([anon-veracoder](https://github.com/anon-veracoder)) - Dynamic Analysis API Examples. Currently includes example code for using the Scanner Variables feature, where credentials can be defined and updated at the account level, and referenced in Selenium login scripts.
 
 ## Results collection and display
 
@@ -208,11 +216,11 @@ These projects are community contributed and not supported by Veracode. For a li
 
 - [Veracode - Gitlab static results report and issue generation](https://gitlab.com/julz0815/veracodesastresultsimport) ([julz0815](https://gitlab.com/julz0815/)) - A little Java Script will download json results from a Veracode policy or sandbox scan into Gitlab readable report format in order display results as SAST results on the pipeline run and create Gitlab issues on the findings
 
-- [veracode-to-csv](https://github.com/ctcampbell/veracode-to-csv) ([Ctcampbell](https://github.com/ctcampbell)) - This script outputs one CSV file per scan per application profile visible in a Veracode platform account. The output can be imported into  Splunk for further analysis.
+- [veracode-to-csv](https://github.com/ctcampbell/veracode-to-csv) ([Ctcampbell](https://github.com/ctcampbell)) - This script outputs one CSV file per scan per application profile visible in a Veracode platform account. The output can be imported into Splunk for further analysis.
 
 - [VCCLI](https://github.com/michaelhorty/VCCLI) ([Michaelhorty](https://github.com/michaelhorty)) - Veracode AST and Security Labs utility in .NET Core.
 
-- [Generate License Notice file](https://github.com/gmdavef/sca-scripts) ([Dave Ferguson](https://github.com/gmdavef)) - Python script that creates a License Notice file (sometimes called an Attribution Report) for an application that has been scanned by Veracode SCA. 
+- [Generate License Notice file](https://github.com/gmdavef/sca-scripts) ([Dave Ferguson](https://github.com/gmdavef)) - Python script that creates a License Notice file (sometimes called an Attribution Report) for an application that has been scanned by Veracode SCA.
 
 ## User provisioning, management and deprovisioning
 
