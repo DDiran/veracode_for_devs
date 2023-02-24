@@ -69,31 +69,26 @@ def save_to_json(data):
     for f in glob.glob(path.join(json_path, "*.json")):
         rmv(f)
 
-    # Create a dictionary to store the category files
-    category_files = {}
+    # Group entries by category
+    categories = {}
+    for entry in data['community_integrations']:
+        category = entry['categories']['category']
+        categories.setdefault(category, []).append(entry)
+
+    # Save entries to category files
+    for category, entries in categories.items():
+        # Slugify the category name (replace spaces with dashes and lowercase the string)
+        category_slug = category.lower().replace(" ", "-")
+        category_file_path = path.join(json_path, f"{category_slug}.json")
+        with open(category_file_path, "w") as f:
+            for entry in entries:
+                json.dump(entry, f)
+                f.write("\n")
 
     # Save the entire dataset to a JSON file
     with open(path.join(json_path, 'community_integrations.json'), 'w') as f:
         f.write(json.dumps(data))
 
-# Loop through the JSON entries and group them by category
-    for entry in data['community_integrations']:
-        category = entry['categories']['category']
-
-        # Create a new file for the category if it doesn't exist
-        if category not in category_files:
-            # Slugify the category name (replace spaces with dashes and lowercase the string)
-            category_slug = category.lower().replace(" ", "-")
-            category_file_path = path.join(json_path, f"{category_slug}.json")
-            category_files[category_slug] = open(category_file_path, "w")
-        
-        # Write the entry to the corresponding category file
-        json.dump(entry, category_files[category_slug])
-        category_files[category_slug].write("\n")
-
-    # Close all the category files
-    for f in category_files.values():
-        f.close()
 
 # def publish_to_remote_repo(category_files):
 #     # Push the category files to the remote repository
