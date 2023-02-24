@@ -10,15 +10,15 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - uses: actions/checkout@v2.5.2
+      - uses: actions/checkout@3
       - name: Set up Python
-        uses: actions/setup-python@v2.2.3
+        uses: actions/setup-python@v4
         with:
-          python-version: 3.x
+          python-version: 3.8
       - name: Convert Markdown to JSON
         run: python md-json-convert.py
       - name: Upload community-feed as artifact
-        uses: actions/upload-artifact@v2.3.3
+        uses: actions/upload-artifact@v3
         with:
           name: community-feed
           path: community-feed
@@ -28,9 +28,9 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - uses: actions/checkout@v2.5.2
+      - uses: actions/checkout@v3
       - name: Deploy to GitHub Pages
-        uses: peaceiris/actions-gh-pages@v4.2.0
+        uses: peaceiris/actions-gh-pages@v3
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
           publish_dir: ./community-feed/
