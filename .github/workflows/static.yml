@@ -35,7 +35,6 @@ jobs:
         with:
           name: community-feed
           path: "."
-  # Single deploy job since we're just deploying
   deploy:
     needs: build
     environment:
@@ -43,12 +42,13 @@ jobs:
       url: ${{ steps.deployment.outputs.page_url }}
     runs-on: ubuntu-latest
     steps:
+      - name: Checkout
+        uses: actions/checkout@v3
       - name: Setup Pages
         uses: actions/configure-pages@v3
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v1
         with:
-          name: community-feed
           path: "."
       - name: Deploy to GitHub Pages
         id: deployment
