@@ -90,37 +90,6 @@ def save_to_json(data):
         f.write(json.dumps(data))
 
 
-# def publish_to_remote_repo(category_files):
-#     # Push the category files to the remote repository
-#     repo_owner = "your-username"
-#     repo_name = "your-repo"
-#     branch_name = "main"
-#     commit_message = "Add category files"
-
-#     base_url = "https://api.github.com"
-#     headers = {
-#         "Authorization": f"token {access_token}",
-#         "Accept": "application/vnd.github.v3+json"
-#     }
-
-#     for category, f in category_files.items():
-#         # Read the category file data
-#         f.seek(0)
-#         file_data = f.read()
-
-#         # Create the file on the remote repository
-#         url = f"{base_url}/repos/{repo_owner}/{repo_name}/contents/{category}.json"
-#         data = {
-#             "message": commit_message,
-#             "content": file_data,
-#             "branch": branch_name
-#         }
-#         response = requests.put(url, headers=headers, json=data)
-
-#         # Check if the request was successful
-#         if response.status_code != 201:
-#             print(f"Failed to create file for category {category}: {response.json()['message']}")    
-
 def main():
     readme_path = path.join(path.dirname(path.realpath(__file__)), 'README.md')
 
