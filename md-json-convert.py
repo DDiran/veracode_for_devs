@@ -77,13 +77,15 @@ def save_to_json(data):
 
     # Save entries to category files
     for category, entries in categories.items():
-        # Slugify the category name (replace spaces with dashes and lowercase the string)
-        category_slug = category.lower().replace(" ", "-")
+        # Slugify the category name (replace spaces with dashes, remove commas & lowercase the string)
+        category_slug = category.replace(" ", "-").replace(",", "").lower()
         category_file_path = path.join(json_path, f"{category_slug}.json")
+        
+        # Create a dictionary with the category file path as the key and the list of entries as the value
+        category_data = {category_slug: entries}
+
         with open(category_file_path, "w") as f:
-            for entry in entries:
-                json.dump(entry, f)
-                f.write("\n")
+            json.dump(category_data, f)
 
     # Save the entire dataset to a JSON file
     with open(path.join(json_path, 'community_integrations.json'), 'w') as f:
